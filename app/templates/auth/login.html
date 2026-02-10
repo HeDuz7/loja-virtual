@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Login | Loja Virtual{% endblock %}
+
+{% block css %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+{% endblock %}
+
+{% block content %}
+  <main class="page">
+    <section class="card">
+      <h1 class="title">Entrar</h1>
+      <p class="subtitle">Acesse sua conta para continuar</p>
+
+      <form class="form" method="post" action="#">
+        <label class="label" for="email">E-mail</label>
+        <input class="input" id="email" name="email" type="email" placeholder="seu@email.com" required>
+
+        <label class="label" for="password">Senha</label>
+        <input class="input" id="password" name="password" type="password" placeholder="••••••••" required>
+
+        <button class="btn" type="submit">Entrar</button>
+      </form>
+
+      <div class="footer">
+        <a class="link" href="#">Esqueci minha senha</a>
+      </div>
+    </section>
+  </main>
+{% endblock %}
