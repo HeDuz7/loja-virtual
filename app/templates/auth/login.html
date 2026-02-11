@@ -1,22 +1,31 @@
-<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+{% extends "base.html" %}
 
-<main class="page">
-  <section class="card">
-    <h1 class="title">Entrar</h1>
-    <p class="subtitle">Acesse sua conta para continuar</p>
+{% block title %}Login | LZ Sports{% endblock %}
 
-    <form class="form" method="post" action="#">
-      <label class="label" for="email">E-mail</label>
-      <input class="input" id="email" name="email" type="email" placeholder="seu@email.com" required>
+{% block css %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+{% endblock %}
 
-      <label class="label" for="password">Senha</label>
-      <input class="input" id="password" name="password" type="password" placeholder="••••••••" required>
+{% block content %}
+<div class="login-layout">
+  <!-- Card esquerdo -->
+  <section class="login-card">
+    <img class="login-logo" src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo">
 
-      <button class="btn" type="submit">Entrar</button>
+    <form class="login-form" method="post" action="#">
+      <input class="login-input" type="text" name="usuario" placeholder="Usuário" required>
+      <input class="login-input" type="password" name="senha" placeholder="Senha" required>
+
+      <button class="login-btn" type="submit">Entre</button>
+
+      <div class="login-links">
+        <a href="#" class="login-link">Esqueceu a senha ?</a>
+        <a href="#" class="login-link">Não tem uma conta?</a>
+      </div>
     </form>
-
-    <div class="footer">
-      <a class="link" href="#">Esqueci minha senha</a>
-    </div>
   </section>
-</main>
+
+  <!-- Lado direito (background) -->
+  <aside class="login-hero" aria-hidden="true"></aside>
+</div>
+{% endblock %}

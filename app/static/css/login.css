@@ -1,63 +1,128 @@
 * { box-sizing: border-box; }
-body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: #0f172a; color: #0b1220; }
+html, body { height: 100%; }
+body { margin: 0; font-family: Arial, Helvetica, sans-serif; }
 
-.page{
+.login-layout{
   min-height: 100vh;
-  display: grid;
-  place-items: center;
-  padding: 24px;
-}
-
-.card{
-  width: 100%;
-  max-width: 420px;
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 28px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.25);
-}
-
-.title{ margin: 0 0 6px; font-size: 26px; }
-.subtitle{ margin: 0 0 18px; color: #475569; }
-
-.form{ display: grid; gap: 10px; }
-.label{ font-size: 14px; color: #334155; }
-
-.input{
-  width: 100%;
-  padding: 12px 12px;
-  border: 1px solid #cbd5e1;
-  border-radius: 10px;
-  outline: none;
-}
-
-.input:focus{
-  border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37,99,235,.15);
-}
-
-.btn{
-  margin-top: 6px;
-  padding: 12px;
-  border: 0;
-  border-radius: 10px;
-  cursor: pointer;
-  background: #2563eb;
-  color: white;
-  font-weight: 700;
-}
-
-.btn:hover{ filter: brightness(.95); }
-
-.footer{
-  margin-top: 14px;
   display: flex;
-  justify-content: center;
 }
 
-.link{
-  color: #2563eb;
-  text-decoration: none;
-  font-size: 14px;
+/* CARD ESQUERDO (branco com cantos arredondados) */
+.login-card{
+  width: min(863px, 46vw);
+  background: #fff;
+  border-top-right-radius: 60px;
+  border-bottom-right-radius: 60px;
+  padding: clamp(20px, 3vw, 44px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
 }
-.link:hover{ text-decoration: underline; }
+
+/* Logo do topo */
+.login-logo{
+  width: clamp(90px, 10vw, 186px);
+  height: auto;
+}
+
+/* Form */
+.login-form{
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.login-input{
+  height: 44px;
+  border: 2px solid #222;
+  border-radius: 6px;
+  padding: 0 14px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.login-input::placeholder{
+  color: #555;
+  font-weight: 600;
+}
+
+/* Botão */
+.login-btn{
+  height: 46px;
+  border: 2px solid #222;
+  border-radius: 6px;
+  background: #1f7f97;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.login-btn:hover{ filter: brightness(.95); }
+
+.login-links{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+}
+
+.login-link{
+  color: #000;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.login-link:hover{ text-decoration: underline; }
+
+/* LADO DIREITO (fundo) */
+.login-hero{
+  flex: 1;
+  background-image: url("/static/img/bg-login.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* ✅ RESPONSIVO (tablets e celulares) */
+@media (max-width: 900px){
+  .login-layout{
+    flex-direction: column;
+  }
+  .login-hero{
+    background-position: center top;
+    min-height: 42vh;
+  }
+
+
+  .login-card{
+    width: 100%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+  }
+
+.login-hero{
+  flex: 1;
+  background-image: url("/static/img/bg-login.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 75% center; /* puxa um pouco pro lado do texto */
+}
+}
+
+/* ✅ EXTRA: celulares pequenos */
+@media (max-width: 420px){
+  .login-form{ max-width: 320px; }
+  .login-input{ font-size: 15px; }
+}
+
+@media (min-width: 1400px){
+  .login-hero{
+    background-position: 100% center;
+  }
+}
