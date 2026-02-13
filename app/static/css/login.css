@@ -10,9 +10,7 @@ body { margin: 0; font-family: Arial, Helvetica, sans-serif; }
 /* CARD ESQUERDO (branco com cantos arredondados) */
 .login-card{
   width: min(863px, 46vw);
-  background: #fff;
-  border-top-right-radius: 60px;
-  border-bottom-right-radius: 60px;
+  background: #227d99;
   padding: clamp(20px, 3vw, 44px);
   display: flex;
   flex-direction: column;
@@ -53,12 +51,13 @@ body { margin: 0; font-family: Arial, Helvetica, sans-serif; }
 /* Botão */
 .login-btn{
   height: 46px;
-  border: 2px solid #222;
+  border: 2px solid #ffffff;
   border-radius: 6px;
-  background: #1f7f97;
+  background: #000;
   font-size: 18px;
   font-weight: 700;
   cursor: pointer;
+  color: #ffffff;
 }
 
 .login-btn:hover{ filter: brightness(.95); }
@@ -74,7 +73,7 @@ body { margin: 0; font-family: Arial, Helvetica, sans-serif; }
 .login-link{
   color: #000;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .login-link:hover{ text-decoration: underline; }
