@@ -13,14 +13,16 @@
     <img class="login-logo" src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo">
 
     <form class="login-form" method="post" action="#">
-      <input class="login-input" type="text" name="usuario" placeholder="Usuário" required>
-      <input class="login-input" type="password" name="senha" placeholder="Senha" required>
+        <input class="login-input" type="text" name="full_name" placeholder="Nome completo" required>
+        <input class="login-input" type="email" name="email" placeholder="E-mail" required>
+        <input class="login-input" type="text" name="username" placeholder="Usuário" required>
+        <input class="login-input" type="password" name="password" placeholder="Senha" required minlength="6">
+        <input class="login-input" type="password" name="confirm_password" placeholder="Confirmar senha" required minlength="6">
 
       <button class="login-btn" type="submit">Entre</button>
 
       <div class="login-links">
-        <a href="#" class="login-link">Esqueceu a senha ?</a>
-        <a href="{{ url_for('main.register_page') }}" class="login-link">Não tem uma conta?</a>
+        <a href="{{ url_for('main.login') }}" class="login-link">Já tenho uma conta</a>
       </div>
     </form>
   </section>

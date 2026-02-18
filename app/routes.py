@@ -14,6 +14,10 @@ def home():
 def login():
     return render_template("auth/login.html")
 
+@main_bp.route("/register")
+def register_page():
+    return render_template("auth/register.html")
+
 # --- ROTAS DE API (DADOS DO SUPABASE) ---
 
 # Rota de Cadastro
@@ -40,3 +44,5 @@ def listar_produtos():
         return jsonify(response.data), 200
     except Exception as e:
         return jsonify({"erro": str(e)}), 500
+    
+    
