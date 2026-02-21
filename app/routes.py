@@ -1,6 +1,7 @@
-from flask import Blueprint, render_template, request, jsonify
-# Importa a conexão que criamos no passo anterior
+from flask import Blueprint, render_template, request, jsonify, redirect, url_for
 from app.database import supabase, supabase_admin 
+from flask import request, render_template
+from werkzeug.security import generate_password_hash
 
 main_bp = Blueprint("main", __name__)
 
@@ -20,29 +21,27 @@ def register_page():
 
 # --- ROTAS DE API (DADOS DO SUPABASE) ---
 
-# Rota de Cadastro
-@main_bp.route('/auth/cadastro', methods=['POST'])
-def cadastro():
-    data = request.json
-    try:
-        response = supabase.auth.sign_up({
-            "email": data.get('email'),
-            "password": data.get('password'),
-            "options": {
-                "data": {"full_name": data.get('full_name')}
-            }
-        })
-        return jsonify({"msg": "Criado com sucesso!", "id": response.user.id}), 201
-    except Exception as e:
-        return jsonify({"erro": str(e)}), 400
+@main_bp.route('/cadastrar', methods=['POST'])
+def register():
+    if request.method == 'POST':
+        nome = request.form.get('full_name')
+        email = request.form.get('email')
+        usuario = request.form.get('username')
+        senha = request.form.get('password')
+        senha_segura = generate_password_hash(senha)
 
-# Rota de Listar Produtos
-@main_bp.route('/produtos', methods=['GET'])
-def listar_produtos():
-    try:
-        response = supabase.table('products').select("*").execute()
-        return jsonify(response.data), 200
-    except Exception as e:
-        return jsonify({"erro": str(e)}), 500
-    
-    
+        dados = {
+            "full_name": nome,
+            "email": email,
+            "username": usuario,
+            "password": senha_segura
+        }
+
+        try:
+            supabase.table("users").insert(dados).execute()
+            return redirect(url_for('main.login'))
+            
+        except Exception as erro:
+            return f"Erro ao salvar: {erro}"
+
+    return render_template('register.html')
