@@ -19,6 +19,9 @@ def login():
 def register_page():
     return render_template("auth/register.html")
 
+@main_bp.route("/home")
+def home_page():
+    return render_template("home.html")  # ou "store/home.html" se você salvar nessa pasta
 # --- ROTAS DE API (DADOS DO SUPABASE) ---
 
 @main_bp.route('/cadastrar', methods=['POST'])

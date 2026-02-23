@@ -1,0 +1,144 @@
+/* =========================
+   RESET / BASE
+========================= */
+* { box-sizing: border-box; }
+
+body{
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+}
+
+/* =========================
+   TOPBAR (Bootstrap + ajustes finos)
+   - Você já usa bg-black no HTML,
+     aqui é só para garantir o espaçamento e comportamento
+========================= */
+header.bg-black{
+  /* mantém topbar limpa e “chapada” igual ao print */
+  box-shadow: none;
+}
+
+.input-group .input-group-text{
+  /* ícone da lupa sem borda */
+  border: 0 !important;
+}
+
+.input-group .form-control{
+  /* input sem borda e sem sombra */
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* (Opcional) placeholder mais centralizado visualmente como no print */
+.input-group .form-control::placeholder{
+  color: #6f6f6f;
+  font-weight: 600;
+}
+
+/* botão carrinho da topbar */
+.topbar-cart-btn{
+  height: 38px;
+  min-width: 54px;
+}
+
+/* =========================
+   BANNER / HERO
+========================= */
+.hero{
+  width: 100%;
+  background: #000; /* caso a imagem não carregue */
+}
+
+.hero__img{
+  width: 100%;
+  height: 360px;           /* altura do banner como no print */
+  object-fit: cover;       /* corta e preenche */
+  object-position: center; /* centraliza */
+  display: block;
+}
+
+/* =========================
+   PRODUTOS (cards 400x400)
+========================= */
+.product-card{
+  width: 420px; /* pra acomodar 400x400 + info abaixo */
+}
+
+/* área da imagem */
+.product-card__media{
+  width: 400px;
+  height: 400px;           /* igual ao print */
+  background: #2b7c92;     /* placeholder azul */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* imagem dentro do card */
+.product-card__img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* se sua imagem não for 400x400, ele recorta */
+  display: block;
+}
+
+/* área de texto + ícone do carrinho */
+.product-card__info{
+  width: 400px;
+  margin-top: 12px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+/* textos */
+.product-card__title{
+  margin: 0;
+  font-size: 22px;
+  font-weight: 400;
+  color: #0b0b0b;
+}
+
+.product-card__sub{
+  margin: 6px 0 0 0;
+  font-size: 22px;
+  font-weight: 400;
+  color: #0b0b0b;
+}
+
+/* ícone do carrinho no card */
+.product-cart-icon{
+  font-size: 30px;
+  line-height: 1;
+  color: #0b0b0b;
+}
+
+/* hover leve no ícone */
+.product-card__btn:hover .product-cart-icon{
+  opacity: 0.75;
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+@media (max-width: 992px){
+  .hero__img{ height: 280px; }
+}
+
+@media (max-width: 820px){
+  .hero__img{ height: 240px; }
+
+  /* cards ficam fluidos (mantém quadrado) */
+  .product-card{ width: min(420px, 92vw); }
+
+  .product-card__media{
+    width: min(400px, 92vw);
+    height: min(400px, 92vw);
+  }
+
+  .product-card__info{
+    width: min(400px, 92vw);
+  }
+}
