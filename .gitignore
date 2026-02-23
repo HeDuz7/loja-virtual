@@ -2,3 +2,7 @@
 __pycache__/
 instance/
 .venv/
+*.pyc
+*.pyo
+*.pyd
+venv/
