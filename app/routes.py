@@ -19,10 +19,28 @@ def login():
 def register_page():
     return render_template("auth/register.html")
 
-@main_bp.route("/home")
+@main_bp.get("/home")
 def home_page():
-    return render_template("home.html")  # ou "store/home.html" se você salvar nessa pasta
+    return render_template("home.html")
 # --- ROTAS DE API (DADOS DO SUPABASE) ---
+
+@main_bp.get("/produto/detalhe")
+def produto_detalhe():
+    # Tudo fixo por enquanto
+    produto = {
+        "nome": "Nome da Camisa",
+        "temporada": "2026/2027 - Camisa 1",
+        "modelo": "Modelo da Camisa",
+        "descricao": (
+            "Reviva a história com a camisa retrô do Manchester United, "
+            "inspirada na temporada icônica de 1992-1994. Com design clássico "
+            "e gola polo elegante, esta peça combina estilo e nostalgia, perfeita "
+            "para os torcedores apaixonados."
+        ),
+        "imagem": "img/products/camisa1.jpg",
+        "rating": 4
+    }
+    return render_template("produto/detalhe.html", produto=produto)
 
 @main_bp.route('/cadastrar', methods=['POST'])
 def register():

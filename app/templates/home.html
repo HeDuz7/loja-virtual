@@ -64,24 +64,28 @@
     <div class="row g-5 justify-content-center">
 
       <!-- CARD 1 -->
-      <div class="col-12 col-md-6 col-xl-4 d-flex justify-content-center">
-        <div class="product-card">
-          <div class="product-card__media">
-            <img class="product-card__img" src="{{ url_for('static', filename='img/products/sao-paulo-24-25.png') }}" alt="São Paulo 24/25">
-          </div>
+<div class="col-12 col-md-6 col-xl-4 d-flex justify-content-center">
+  <a href="{{ url_for('main.produto_detalhe') }}" class="product-card text-decoration-none">
+    <div class="product-card__media">
+      <img class="product-card__img"
+          src="{{ url_for('static', filename='img/products/sao-paulo-24-25.png') }}"
+          alt="São Paulo 24/25">
+    </div>
 
-          <div class="product-card__info">
-            <div>
-              <div class="product-card__title">São Paulo</div>
-              <div class="product-card__sub">24/25</div>
-            </div>
-
-            <button class="btn p-0 product-card__btn" type="button">
-                <i class="bi bi-cart3 product-cart-icon"></i>
-            </button>
-          </div>
-        </div>
+    <div class="product-card__info">
+      <div>
+        <div class="product-card__title">São Paulo</div>
+        <div class="product-card__sub">24/25</div>
       </div>
+
+      <!-- evita navegar ao clicar no carrinho -->
+      <button class="btn p-0 product-card__btn" type="button"
+              onclick="event.preventDefault(); event.stopPropagation();">
+        <i class="bi bi-cart3 product-cart-icon"></i>
+      </button>
+    </div>
+  </a>
+</div>
 
       <!-- CARD 2 -->
       <div class="col-12 col-md-6 col-xl-4 d-flex justify-content-center">
